@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User{
+  id String @id @default(uuid())
+  email String @unique
+  password String
+  name String
+  RawVideos RawVideo[]
+  createdAt DateTime @default(now())
+} 
+
+model RawVideo{
+  id String @id @default(uuid())
+  url String
+  userId String
+  user User @relation(fields: [userId],references: [id])
+  status OutboxStatus @default(PENDING)
+  transcodedVideos TranscodedVideo[]
+  createdAt DateTime @default(now())
+}
+
+model TranscodedVideo{
+  id String @id @default(uuid())
+  url String
+  rawVideoId String
+  rawVideo RawVideo @relation(fields: [rawVideoId],references: [id])
+  createdAt DateTime @default(now())
+}
+
+enum OutboxStatus {
+  PENDING
+  PROCESSED
+  FAILED
+}

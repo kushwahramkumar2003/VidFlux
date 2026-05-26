@@ -1,0 +1,17 @@
+{
+  "name": "orchestrator",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "@repo/redis": "*:workspace",
+    "@repo/common": "*:workspace",
+    "@repo/db": "*:workspace"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

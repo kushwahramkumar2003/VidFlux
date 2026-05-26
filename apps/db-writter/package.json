@@ -1,0 +1,17 @@
+{
+  "name": "db-writter",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "@repo/db": "*:workspace",
+    "@repo/redis": "*:workspace",
+    "@repo/common": "*:workspace"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
